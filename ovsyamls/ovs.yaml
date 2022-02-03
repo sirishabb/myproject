@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "onlinevegetabledb"
+  name: "nginx-sirisha-ovs"
   namespace: "default"
   labels:
-    app: "onlinevegetabledb"
+    app: "nginx-sirisha-ovs"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "onlinevegetabledb"
+      app: "nginx-sirisha-ovs"
   template:
     metadata:
       labels:
-        app: "onlinevegetabledb"
+        app: "nginx-sirisha-ovs"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:a7f83327ad7a990a63b6e544514b80538a6f3f41996e29587faf53a9739d70f6"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:0cef5ae7eb21c43a5db488b2f57c4e458d7328db75e30d889987cb649399f060"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "onlinevegetabledb-hpa-5t4h"
+  name: "nginx-sirisha-ovs-hpa-b79y"
   namespace: "default"
   labels:
-    app: "onlinevegetabledb"
+    app: "nginx-sirisha-ovs"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "onlinevegetabledb"
+    name: "nginx-sirisha-ovs"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
@@ -39,4 +39,3 @@ spec:
     resource:
       name: "cpu"
       targetAverageUtilization: 80
-
