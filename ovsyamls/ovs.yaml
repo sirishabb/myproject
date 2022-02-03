@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "siri-ovs"
+  name: "siri-onlinevegetabledb"
   namespace: "default"
   labels:
-    app: "siri-ovs"
+    app: "siri-onlinevegetabledb"
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: "siri-ovs"
+      app: "siri-onlinevegetabledb"
   template:
     metadata:
       labels:
-        app: "siri-ovs"
+        app: "siri-onlinevegetabledb"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:d70d449834bfe7d63d5de310f5ce98fead5561eddf03c10e7b27c582335f592d"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:89285647944e5a49cfc08ef11adc70fc1ab405f9f43b0c2208319e3622650ae4"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "siri-ovs-hpa-nn6s"
+  name: "siri-onlinevegetabledb-hpa-jcuw"
   namespace: "default"
   labels:
-    app: "siri-ovs"
+    app: "siri-onlinevegetabledb"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "siri-ovs"
+    name: "siri-onlinevegetabledb"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
@@ -39,4 +39,3 @@ spec:
     resource:
       name: "cpu"
       targetAverageUtilization: 80
-
