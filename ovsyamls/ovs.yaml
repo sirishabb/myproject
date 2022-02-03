@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "nginx-sirisha-ovs"
+  name: "siriladdu-ovsdb"
   namespace: "default"
   labels:
-    app: "nginx-sirisha-ovs"
+    app: "siriladdu-ovsdb"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "nginx-sirisha-ovs"
+      app: "siriladdu-ovsdb"
   template:
     metadata:
       labels:
-        app: "nginx-sirisha-ovs"
+        app: "siriladdu-ovsdb"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:0cef5ae7eb21c43a5db488b2f57c4e458d7328db75e30d889987cb649399f060"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:36b852370eb3d1b9fcfb55531e79341e3deef364a5b52615afc4d246776bc8a7"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "nginx-sirisha-ovs-hpa-b79y"
+  name: "siriladdu-ovsdb-hpa-h7xu"
   namespace: "default"
   labels:
-    app: "nginx-sirisha-ovs"
+    app: "siriladdu-ovsdb"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "nginx-sirisha-ovs"
+    name: "siriladdu-ovsdb"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
