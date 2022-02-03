@@ -1,0 +1,41 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "ovs-db"
+  namespace: "default"
+  labels:
+    app: "ovs-db"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "ovs-db"
+  template:
+    metadata:
+      labels:
+        app: "ovs-db"
+    spec:
+      containers:
+      - name: "myproject-sha256-1"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:26508b30c0b7e473dd54fbaeacdd698e245e29a7a9bc32ae55b6c219a5d5e519"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "ovs-db-hpa-n5jv"
+  namespace: "default"
+  labels:
+    app: "ovs-db"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "ovs-db"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 1
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
