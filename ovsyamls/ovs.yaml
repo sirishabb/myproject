@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "nginx-22222"
+  name: "nginx-45"
   namespace: "default"
   labels:
-    app: "nginx-22222"
+    app: "nginx-45"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "nginx-22222"
+      app: "nginx-45"
   template:
     metadata:
       labels:
-        app: "nginx-22222"
+        app: "nginx-45"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:1a79503472c89cc7582efd22a83951676069f7e70ed873e690d60c1a0377a3be"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:f6e581b708a6bf2ef56fc75abbc73b3fa49ea355a638f7c2571475891e256ab1"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "nginx-22222-hpa-ysf1"
+  name: "nginx-45-hpa-69yb"
   namespace: "default"
   labels:
-    app: "nginx-22222"
+    app: "nginx-45"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "nginx-22222"
+    name: "nginx-45"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
