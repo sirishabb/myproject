@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "siri-onlinevegetabledb"
+  name: "sirisha-ovsdb"
   namespace: "default"
   labels:
-    app: "siri-onlinevegetabledb"
+    app: "sirisha-ovsdb"
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: "siri-onlinevegetabledb"
+      app: "sirisha-ovsdb"
   template:
     metadata:
       labels:
-        app: "siri-onlinevegetabledb"
+        app: "sirisha-ovsdb"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:89285647944e5a49cfc08ef11adc70fc1ab405f9f43b0c2208319e3622650ae4"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:f370d1b56b01c07562da2c43be22dcced13c8e6056ae1fb0ce9e40651ebf8fe6"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "siri-onlinevegetabledb-hpa-jcuw"
+  name: "sirisha-ovsdb-hpa-jivn"
   namespace: "default"
   labels:
-    app: "siri-onlinevegetabledb"
+    app: "sirisha-ovsdb"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "siri-onlinevegetabledb"
+    name: "sirisha-ovsdb"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
