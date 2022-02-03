@@ -2,40 +2,41 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "ovs-db"
+  name: "siri-ovs"
   namespace: "default"
   labels:
-    app: "ovs-db"
+    app: "siri-ovs"
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: "ovs-db"
+      app: "siri-ovs"
   template:
     metadata:
       labels:
-        app: "ovs-db"
+        app: "siri-ovs"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:26508b30c0b7e473dd54fbaeacdd698e245e29a7a9bc32ae55b6c219a5d5e519"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:d70d449834bfe7d63d5de310f5ce98fead5561eddf03c10e7b27c582335f592d"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "ovs-db-hpa-n5jv"
+  name: "siri-ovs-hpa-nn6s"
   namespace: "default"
   labels:
-    app: "ovs-db"
+    app: "siri-ovs"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "ovs-db"
+    name: "siri-ovs"
     apiVersion: "apps/v1"
   minReplicas: 1
-  maxReplicas: 1
+  maxReplicas: 5
   metrics:
   - type: "Resource"
     resource:
       name: "cpu"
       targetAverageUtilization: 80
+
