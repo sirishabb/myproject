@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "siriladdu-ovsdb"
+  name: "nginx-22222"
   namespace: "default"
   labels:
-    app: "siriladdu-ovsdb"
+    app: "nginx-22222"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "siriladdu-ovsdb"
+      app: "nginx-22222"
   template:
     metadata:
       labels:
-        app: "siriladdu-ovsdb"
+        app: "nginx-22222"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:36b852370eb3d1b9fcfb55531e79341e3deef364a5b52615afc4d246776bc8a7"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:1a79503472c89cc7582efd22a83951676069f7e70ed873e690d60c1a0377a3be"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "siriladdu-ovsdb-hpa-h7xu"
+  name: "nginx-22222-hpa-ysf1"
   namespace: "default"
   labels:
-    app: "siriladdu-ovsdb"
+    app: "nginx-22222"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "siriladdu-ovsdb"
+    name: "nginx-22222"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
