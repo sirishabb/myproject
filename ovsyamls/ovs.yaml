@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "nginx-45"
+  name: "sirispringappdb"
   namespace: "default"
   labels:
-    app: "nginx-45"
+    app: "sirispringappdb"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "nginx-45"
+      app: "sirispringappdb"
   template:
     metadata:
       labels:
-        app: "nginx-45"
+        app: "sirispringappdb"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:f6e581b708a6bf2ef56fc75abbc73b3fa49ea355a638f7c2571475891e256ab1"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:d11062206dd57449e980b09931fdbaa0e1eefcf240325866910011812bd78a4c"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "nginx-45-hpa-69yb"
+  name: "sirispringappdb-hpa-fape"
   namespace: "default"
   labels:
-    app: "nginx-45"
+    app: "sirispringappdb"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "nginx-45"
+    name: "sirispringappdb"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
