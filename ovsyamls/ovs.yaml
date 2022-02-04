@@ -1,52 +1,36 @@
 ---
-apiVersion: "v1"
-kind: "ConfigMap"
-metadata:
-  name: "team4-ovs-config-dhch"
-  namespace: "default"
-  labels:
-    app: "team4-ovs"
-data:
-  doll: "teddy"
----
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "team4-ovs"
+  name: "onlinevegetablesale-db"
   namespace: "default"
   labels:
-    app: "team4-ovs"
+    app: "onlinevegetablesale-db"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "team4-ovs"
+      app: "onlinevegetablesale-db"
   template:
     metadata:
       labels:
-        app: "team4-ovs"
+        app: "onlinevegetablesale-db"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:2d3df2f0c284ba4e5ca1eba6c5880dfcba354dd1087ff7dd3ae05942e51cf912"
-        env:
-        - name: "doll"
-          valueFrom:
-            configMapKeyRef:
-              key: "doll"
-              name: "team4-ovs-config-dhch"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:672bba9b32ad94bde4fe2f2cad6f661826f4362aec483f60c9cf1e848d8c7956"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "team4-ovs-hpa-8vfz"
+  name: "onlinevegetablesale-db-hpa-vatn"
   namespace: "default"
   labels:
-    app: "team4-ovs"
+    app: "onlinevegetablesale-db"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "team4-ovs"
+    name: "onlinevegetablesale-db"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
