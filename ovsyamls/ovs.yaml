@@ -2,38 +2,38 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "team4-ssstp-ovs"
+  name: "siribb-ovs"
   namespace: "default"
   labels:
-    app: "team4-ssstp-ovs"
+    app: "siribb-ovs"
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: "team4-ssstp-ovs"
+      app: "siribb-ovs"
   template:
     metadata:
       labels:
-        app: "team4-ssstp-ovs"
+        app: "siribb-ovs"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:e61389459fab14797facba5142b80db23c17610d5ab793399d9fa1dd72a142f8"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:0b61692b73ad0fdf690317818555f94a25a06d3a3a429cbb48b8e62a73e9fe24"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "team4-ssstp-ovs-hpa-uqce"
+  name: "siribb-ovs-hpa-vrjm"
   namespace: "default"
   labels:
-    app: "team4-ssstp-ovs"
+    app: "siribb-ovs"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "team4-ssstp-ovs"
+    name: "siribb-ovs"
     apiVersion: "apps/v1"
   minReplicas: 1
-  maxReplicas: 1
+  maxReplicas: 5
   metrics:
   - type: "Resource"
     resource:
