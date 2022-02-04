@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "onlinevs--team4-sirisha"
+  name: "ovegtab-team4-sirisha"
   namespace: "default"
   labels:
-    app: "onlinevs--team4-sirisha"
+    app: "ovegtab-team4-sirisha"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "onlinevs--team4-sirisha"
+      app: "ovegtab-team4-sirisha"
   template:
     metadata:
       labels:
-        app: "onlinevs--team4-sirisha"
+        app: "ovegtab-team4-sirisha"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:accee2dcbf8809e77a1a2fab6e16082d6f34045e0ba6bbdd09ac66f810e8acda"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:4c6b1ee5e7e5459ccc221bcf3e9c0ee33f1994957dd2e09d059540562d8913cd"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "onlinevs--team4-sirisha-hpa-06ky"
+  name: "ovegtab-team4-sirisha-hpa-qorx"
   namespace: "default"
   labels:
-    app: "onlinevs--team4-sirisha"
+    app: "ovegtab-team4-sirisha"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "onlinevs--team4-sirisha"
+    name: "ovegtab-team4-sirisha"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
@@ -39,4 +39,3 @@ spec:
     resource:
       name: "cpu"
       targetAverageUtilization: 80
-
