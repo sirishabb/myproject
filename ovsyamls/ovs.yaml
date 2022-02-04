@@ -2,38 +2,38 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "siribb-ovs"
+  name: "onlinevegetablesale"
   namespace: "default"
   labels:
-    app: "siribb-ovs"
+    app: "onlinevegetablesale"
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: "siribb-ovs"
+      app: "onlinevegetablesale"
   template:
     metadata:
       labels:
-        app: "siribb-ovs"
+        app: "onlinevegetablesale"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:0b61692b73ad0fdf690317818555f94a25a06d3a3a429cbb48b8e62a73e9fe24"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:ac1ec1cbaebba9a3d093c92ee778c1354195897be6edc936816634fd303fc2df"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "siribb-ovs-hpa-vrjm"
+  name: "onlinevegetablesale-hpa-3t6a"
   namespace: "default"
   labels:
-    app: "siribb-ovs"
+    app: "onlinevegetablesale"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "siribb-ovs"
+    name: "onlinevegetablesale"
     apiVersion: "apps/v1"
   minReplicas: 1
-  maxReplicas: 5
+  maxReplicas: 1
   metrics:
   - type: "Resource"
     resource:
