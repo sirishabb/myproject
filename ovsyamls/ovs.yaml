@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "springovs-team4-db"
+  name: "onlinevs--team4-sirisha"
   namespace: "default"
   labels:
-    app: "springovs-team4-db"
+    app: "onlinevs--team4-sirisha"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "springovs-team4-db"
+      app: "onlinevs--team4-sirisha"
   template:
     metadata:
       labels:
-        app: "springovs-team4-db"
+        app: "onlinevs--team4-sirisha"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:8479101a98f3d8d91177a15536b1b78201115a7bca95003aee79db5bf1d463c8"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:accee2dcbf8809e77a1a2fab6e16082d6f34045e0ba6bbdd09ac66f810e8acda"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "springovs-team4-db-hpa-ubuq"
+  name: "onlinevs--team4-sirisha-hpa-06ky"
   namespace: "default"
   labels:
-    app: "springovs-team4-db"
+    app: "onlinevs--team4-sirisha"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "springovs-team4-db"
+    name: "onlinevs--team4-sirisha"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
@@ -39,3 +39,4 @@ spec:
     resource:
       name: "cpu"
       targetAverageUtilization: 80
+
