@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "ovegtab-team4-sirisha"
+  name: "sss-team4"
   namespace: "default"
   labels:
-    app: "ovegtab-team4-sirisha"
+    app: "sss-team4"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "ovegtab-team4-sirisha"
+      app: "sss-team4"
   template:
     metadata:
       labels:
-        app: "ovegtab-team4-sirisha"
+        app: "sss-team4"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:4c6b1ee5e7e5459ccc221bcf3e9c0ee33f1994957dd2e09d059540562d8913cd"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:a8d29ee71eee01526430d8f4f863b4a1b92fc9da45615de7a643df13bc394374"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "ovegtab-team4-sirisha-hpa-qorx"
+  name: "sss-team4-hpa-n73j"
   namespace: "default"
   labels:
-    app: "ovegtab-team4-sirisha"
+    app: "sss-team4"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "ovegtab-team4-sirisha"
+    name: "sss-team4"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
