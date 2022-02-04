@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "onlinevegetablesale-db"
+  name: "m3-ovsdb"
   namespace: "default"
   labels:
-    app: "onlinevegetablesale-db"
+    app: "m3-ovsdb"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "onlinevegetablesale-db"
+      app: "m3-ovsdb"
   template:
     metadata:
       labels:
-        app: "onlinevegetablesale-db"
+        app: "m3-ovsdb"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:672bba9b32ad94bde4fe2f2cad6f661826f4362aec483f60c9cf1e848d8c7956"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:88ccfe9a00309f8d43b54eb245d4c9f6bcd0488f0b580587d12fc6a02022c4c9"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "onlinevegetablesale-db-hpa-vatn"
+  name: "m3-ovsdb-hpa-gqv9"
   namespace: "default"
   labels:
-    app: "onlinevegetablesale-db"
+    app: "m3-ovsdb"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "onlinevegetablesale-db"
+    name: "m3-ovsdb"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
