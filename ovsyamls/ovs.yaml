@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "shirishaovsdb"
+  name: "sirishab-springproject-db"
   namespace: "default"
   labels:
-    app: "shirishaovsdb"
+    app: "sirishab-springproject-db"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "shirishaovsdb"
+      app: "sirishab-springproject-db"
   template:
     metadata:
       labels:
-        app: "shirishaovsdb"
+        app: "sirishab-springproject-db"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:e8b1e95ebd8f0e88c7027f9eae8f6fbb732788e30629fae98ca41ddb87f49efb"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:bf3652fc52cafd8f6a71237536c1a72537bc0c0ccea0d64ef488e3ec81540566"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "shirishaovsdb-hpa-pr0x"
+  name: "sirishab-springproject-db-hpa-rsdg"
   namespace: "default"
   labels:
-    app: "shirishaovsdb"
+    app: "sirishab-springproject-db"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "shirishaovsdb"
+    name: "sirishab-springproject-db"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
