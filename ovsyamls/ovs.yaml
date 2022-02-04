@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "onlinevegetablesale"
+  name: "ssstp"
   namespace: "default"
   labels:
-    app: "onlinevegetablesale"
+    app: "ssstp"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "onlinevegetablesale"
+      app: "ssstp"
   template:
     metadata:
       labels:
-        app: "onlinevegetablesale"
+        app: "ssstp"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:ac1ec1cbaebba9a3d093c92ee778c1354195897be6edc936816634fd303fc2df"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:7d991c9a4598f37ab64a8ce20768052377cda3b85193ca0a28b1357eec030730"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "onlinevegetablesale-hpa-3t6a"
+  name: "ssstp-hpa-egdi"
   namespace: "default"
   labels:
-    app: "onlinevegetablesale"
+    app: "ssstp"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "onlinevegetablesale"
+    name: "ssstp"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
