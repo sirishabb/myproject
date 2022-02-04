@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "sirishab-springproject-db"
+  name: "team4-ssstp-ovs"
   namespace: "default"
   labels:
-    app: "sirishab-springproject-db"
+    app: "team4-ssstp-ovs"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "sirishab-springproject-db"
+      app: "team4-ssstp-ovs"
   template:
     metadata:
       labels:
-        app: "sirishab-springproject-db"
+        app: "team4-ssstp-ovs"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:bf3652fc52cafd8f6a71237536c1a72537bc0c0ccea0d64ef488e3ec81540566"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:e61389459fab14797facba5142b80db23c17610d5ab793399d9fa1dd72a142f8"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "sirishab-springproject-db-hpa-rsdg"
+  name: "team4-ssstp-ovs-hpa-uqce"
   namespace: "default"
   labels:
-    app: "sirishab-springproject-db"
+    app: "team4-ssstp-ovs"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "sirishab-springproject-db"
+    name: "team4-ssstp-ovs"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
