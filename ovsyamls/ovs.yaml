@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "nginx-sptss-ovs"
+  name: "springovs-team4-db"
   namespace: "default"
   labels:
-    app: "nginx-sptss-ovs"
+    app: "springovs-team4-db"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "nginx-sptss-ovs"
+      app: "springovs-team4-db"
   template:
     metadata:
       labels:
-        app: "nginx-sptss-ovs"
+        app: "springovs-team4-db"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:2930697f742a8351588e985040df540ecebe9191cdb60364324045dbbce1b1ae"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:8479101a98f3d8d91177a15536b1b78201115a7bca95003aee79db5bf1d463c8"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "nginx-sptss-ovs-hpa-3mvk"
+  name: "springovs-team4-db-hpa-ubuq"
   namespace: "default"
   labels:
-    app: "nginx-sptss-ovs"
+    app: "springovs-team4-db"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "nginx-sptss-ovs"
+    name: "springovs-team4-db"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
