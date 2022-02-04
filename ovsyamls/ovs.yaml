@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "m3-ovsdb"
+  name: "shirishaovsdb"
   namespace: "default"
   labels:
-    app: "m3-ovsdb"
+    app: "shirishaovsdb"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "m3-ovsdb"
+      app: "shirishaovsdb"
   template:
     metadata:
       labels:
-        app: "m3-ovsdb"
+        app: "shirishaovsdb"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:88ccfe9a00309f8d43b54eb245d4c9f6bcd0488f0b580587d12fc6a02022c4c9"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:e8b1e95ebd8f0e88c7027f9eae8f6fbb732788e30629fae98ca41ddb87f49efb"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "m3-ovsdb-hpa-gqv9"
+  name: "shirishaovsdb-hpa-pr0x"
   namespace: "default"
   labels:
-    app: "m3-ovsdb"
+    app: "shirishaovsdb"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "m3-ovsdb"
+    name: "shirishaovsdb"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
