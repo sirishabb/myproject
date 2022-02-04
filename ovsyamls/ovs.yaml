@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "team4-ovsdb"
+  name: "team4-db"
   namespace: "default"
   labels:
-    app: "team4-ovsdb"
+    app: "team4-db"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "team4-ovsdb"
+      app: "team4-db"
   template:
     metadata:
       labels:
-        app: "team4-ovsdb"
+        app: "team4-db"
     spec:
       containers:
       - name: "myproject-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:8613e2eb79fde8976d7e7c6047db6498e2bcb09658bc6c9ae8d63bed159f4bcc"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/myproject@sha256:fea760459af07e0713fb813872f813855d5f6fe415889c1138bae681b2d4b60a"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "team4-ovsdb-hpa-4cm4"
+  name: "team4-db-hpa-am7d"
   namespace: "default"
   labels:
-    app: "team4-ovsdb"
+    app: "team4-db"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "team4-ovsdb"
+    name: "team4-db"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
